@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Loksewa Preparation - Complete Quiz</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .animate-text {
+      background: linear-gradient(to right, #ff416c, #00d2ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .typewriter {
+      overflow: hidden;
+      border-right: .15em solid orange;
+      white-space: nowrap;
+      animation: typing 4s steps(30, end), blink-caret .75s step-end infinite;
+    }
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+    @keyframes blink-caret {
+      from, to { border-color: transparent }
+      50% { border-color: orange; }
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-r from-blue-100 to-purple-200 min-h-screen p-6">
+
+  <div class="text-center mb-8">
+    <h1 class="text-3xl md:text-4xl font-bold typewriter animate-text mb-2">Welcome Aspirants</h1>
+    <p class="text-2xl md:text-3xl italic font-semibold animate-text">Career Capital</p>
+  </div>
+
+  <div class="max-w-5xl mx-auto bg-white p-8 rounded-2xl shadow-2xl">
+    <h2 class="text-3xl font-bold text-center text-purple-700 mb-6">📘 30 Days Loksewa Quiz</h2>
+
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 mb-6" id="days-container">
+      <!-- Days buttons and reset button will be inserted here by JavaScript -->
+    </div>
+
+    <div id="quiz-container" class="space-y-6 hidden"></div>
+  </div>
+
+  <script>
+    const totalDays = 30;
+    let unlockedDays = localStorage.getItem('unlockedDays') ? parseInt(localStorage.getItem('unlockedDays')) : 1;
+    
+    const dayCodes = {
+      1: "final",
+      2: "texture",
+      3: "progress",
+      4: "success"
+    };
+
+    // ================== DAY 1 QUESTIONS (Nepal Geography) ==================
+    const day1Questions = [
+      {
+        question: "नेपालको सबैभन्दा अग्लो हिमाल कुन हो?",
+        options: ["कञ्चनजंघा", "माउन्ट एभरेस्ट", "ल्होत्से", "मनासलु"],
+        correct: 1
+      },
+      {
+        question: "नेपालको कुल क्षेत्रफल कति छ?",
+        options: ["१,४७,११० वर्ग किलोमिटर", "१,०६,८९१ वर्ग किलोमिटर", "१,५८,५४५ वर्ग किलोमिटर", "१,२५,६४४ वर्ग किलोमिटर"],
+        correct: 0
+      },
+      {
+        question: "नेपालको सबैभन्दा ठूलो नदी कुन हो?",
+        options: ["घाँस नदी", "कर्णाली नदी", "गण्डकी नदी", "महाकाली नदी"],
+        correct: 1
+      },
+      {
+        question: "नेपालको राजधानी कुन शहर हो?",
+        options: ["पोखरा", "बिराटनगर", "काठमाडौं", "ललितपुर"],
+        correct: 2
+      },
+      {
+        question: "नेपालको सबैभन्दा लामो सडक कुन हो?",
+        options: ["नेपाल-भारत सडक", "अरुण सडक", "प्राचीन दरबार सडक", "पथर काट्ने सडक"],
+        correct: 0
+      },
+      {
+        question: "नेपालको उत्तरी सिमा कुन देशसँग छ?",
+        options: ["भारत", "चीन", "बांगलादेश", "पाकिस्तान"],
+        correct: 1
+      },
+      {
+        question: "नेपालका थरित हिमालको समूह कुन हो?",
+        options: ["कञ्चनजंघा र शिशापाङ्गमा", "अन्नपूर्ण र धौलागिरी", "महालाङ्गुर र कुम्भु", "हिमालय र कनकपुर"],
+        correct: 1
+      },
+      {
+        question: "नेपालको सबैभन्दा ठूलो ताल कुन हो?",
+        options: ["रारा ताल", "फेवा ताल", "गोसाइंकुण्ड", "इन्द्रसार ताल"],
+        correct: 0
+      },
+      {
+        question: "नेपालको कुल जनसंख्या कति छ (२०७८ को तथ्याङ्क अनुसार)?",
+        options: ["२ करोड ७ लाख", "३ करोड ५ लाख", "५ करोड ३ लाख", "४ करोड ६ लाख"],
+        correct: 1
+      },
+      {
+        question: "नेपालको प्रमुख कृषिजन्य उत्पादन कुन हो?",
+        options: ["धान", "मकै", "गहुँ", "चिया"],
+        correct: 0
+      }
+    ];
+
+    // ================== DAY 2 QUESTIONS (Nepal History) ==================
+    const day2Questions = [
+      {
+        question: "किराँत वंशको शासनकाल कहिलेदेखि कहिलेसम्म रह्यो?",
+        options: ["इ.पू. ८०० – इ.सं. ३००", "इ.पू. ७०० – इ.सं. १००", "इ.पू. ६०० – इ.पू. १००", "इ.पू. ७०० – इ.पू. ३००"],
+        correct: 0
+      },
+      {
+        question: "प्रताप मल्लको शासनकालको प्रमुख सांस्कृतिक उपलब्धि कुन हो?",
+        options: ["धरहरा निर्माण", "काष्ठमण्डप निर्माण", "हनुमान ढोका परिसरको विस्तार", "कृष्ण मन्दिर निर्माण"],
+        correct: 2
+      },
+      {
+        question: "नेपाल एकीकरणको प्रमुख उद्देश्य के थियो?",
+        options: ["व्यापार विस्तार गर्नु", "साना राज्यहरूमा शासन गर्नु", "विदेशी हस्तक्षेप रोक्नु", "बृहत् नेपाल निर्माण गर्नु"],
+        correct: 3
+      },
+      {
+        question: "पृथ्वीनारायण शाहले नेपाल एकीकरणको अभियान कहिले सुरु गरेका थिए?",
+        options: ["वि.सं. १७८९", "वि.सं. १८००", "वि.सं. १८०५", "वि.सं. १७९९"],
+        correct: 3
+      },
+      {
+        question: "सुगौली सन्धिपछि नेपालले कुन क्षेत्र गुमायो?",
+        options: ["सिक्किम", "कुमाउँ–गढ़वाल", "काठमाडौ", "भोजपुर"],
+        correct: 1
+      },
+      {
+        question: "राणा शासनको सुरुवात कसरी भयो?",
+        options: ["कोत पर्व", "भण्डारखाल पर्व", "अलमोडा युद्ध", "सुगौली सन्धि"],
+        correct: 0
+      },
+      {
+        question: "२००७ सालको प्रजातान्त्रिक आन्दोलनको मुख्य कारण के थियो?",
+        options: ["राणाविरुद्ध असन्तोष", "राजसंस्था समाप्ति", "विदेशी हस्तक्षेप", "पार्टी विभाजन"],
+        correct: 0
+      },
+      {
+        question: "नेपालको पहिलो संविधान कहिले जारी गरिएको थियो?",
+        options: ["वि.सं. २००४", "वि.सं. २००७", "वि.सं. २०१५", "वि.सं. २०४७"],
+        correct: 2
+      },
+      {
+        question: "पंचायती व्यवस्था कसले सुरु गरेका थिए?",
+        options: ["भीमसेन थापा", "राजा महेन्द्र", "राजा त्रिभुवन", "राजा वीर विक्रम"],
+        correct: 1
+      },
+      {
+        question: "२०६२/६३ को जनआन्दोलनको प्रमुख उपलब्धि के थियो?",
+        options: ["गणतन्त्र घोषणा", "पंचayat पुनः स्थापना", "संविधानको खारेजी", "फिर्ता राजतन्त्र"],
+        correct: 0
+      }
+    ];
+
+    // ================== DAY 3 QUESTIONS (World History) ==================
+    const day3Questions = [
+      {
+        question: "फ्रान्सेली क्रान्ति कहिले सुरु भएको थियो?",
+        options: ["सन् १७७६", "सन् १७८९", "सन् १८०४", "सन् १७६५"],
+        correct: 1
+      },
+      {
+        question: "प्रथम विश्वयुद्ध कहिलेदेखि कहिलेसम्म चल्यो?",
+        options: ["सन् १९१४–१९१८", "सन् १९२०–१९२४", "सन् १९३९–१९४५", "सन् १९००–१९०५"],
+        correct: 0
+      },
+      {
+        question: "जर्मनीका हिटलर कुन राजनीतिक दलका नेता थिए?",
+        options: ["कम्युनिस्ट पार्टी", "फासिस्ट पार्टी", "नाजी पार्टी", "लिबरल पार्टी"],
+        correct: 2
+      },
+      {
+        question: "कोलम्बसले अमेरिका खोज यात्रा कहिले सुरु गरेका थिए?",
+        options: ["सन् १४९२", "सन् १४५३", "सन् १५००", "सन् १५२०"],
+        correct: 0
+      },
+      {
+        question: "दोस्रो विश्वयुद्धको कारण कुन घटनाले लिएको मानिन्छ?",
+        options: ["जर्मनीले पोल्यान्डमाथि आक्रमण", "जापानले पर्ल हार्बर आक्रमण", "फ्रान्समाथि हमला", "सोभियत संघको बम प्रहार"],
+        correct: 0
+      },
+      {
+        question: "रूसी क्रान्ति कहिले भएको थियो?",
+        options: ["सन् १९१७", "सन् १९२०", "सन् १९०५", "सन् १९३०"],
+        correct: 0
+      },
+      {
+        question: "शीतयुद्ध कुन दुई शक्तिहरूबीच भयो?",
+        options: ["अमेरिका र चीन", "अमेरिका र रूस (सोभियत संघ)", "जर्मनी र फ्रान्स", "बेलायत र जापान"],
+        correct: 1
+      },
+      {
+        question: "औद्योगिक क्रान्ति सबैभन्दा पहिला कहाँबाट सुरु भएको हो?",
+        options: ["जर्मनी", "अमेरिका", "फ्रान्स", "बेलायत"],
+        correct: 3
+      },
+      {
+        question: "संयुक्त राष्ट्रसंघ (UN) कहिले स्थापना भयो?",
+        options: ["सन् १९४५", "सन् १९३९", "सन् १९५०", "सन् १९४०"],
+        correct: 0
+      },
+      {
+        question: "महान चिनियाँ भित्तो कुन वंशको समयमा बनाइएको हो?",
+        options: ["मिङ वंश", "चिङ वंश", "छिन (Qin) वंश", "हान वंश"],
+        correct: 2
+      }
+    ];
+
+    function getQuestionsForDay(day) {
+      if (day === 1) return [...day1Questions];
+      if (day === 2) return [...day2Questions];
+      if (day === 3) return [...day3Questions];
+      return [];
+    }
+
+    function resetProgress() {
+      unlockedDays = 1;
+      localStorage.setItem('unlockedDays', unlockedDays);
+      renderDays();
+      alert('Progress reset! Only Day 1 is now unlocked.');
+    }
+
+    function renderDays() {
+      const container = document.getElementById("days-container");
+      const quizContainer = document.getElementById("quiz-container");
+      quizContainer.classList.add("hidden");
+      container.innerHTML = "";
+
+      for (let i = 1; i <= totalDays; i++) {
+        const btn = document.createElement("button");
+        btn.textContent = `Day ${i}`;
+        btn.className = `py-2 px-4 rounded-xl text-white font-semibold transition shadow-md ${
+          i <= unlockedDays ? "bg-purple-600 hover:bg-purple-700" : "bg-gray-400 cursor-not-allowed"
+        }`;
+        btn.disabled = i > unlockedDays;
+        
+        if (i <= unlockedDays) {
+          btn.onclick = () => handleDayClick(i);
+        }
+        container.appendChild(btn);
+      }
+
+      // Add reset button
+      const resetBtn = document.createElement("button");
+      resetBtn.textContent = "Reset Progress";
+      resetBtn.className = "py-2 px-4 bg-green-600 text-white rounded-xl font-semibold hover:bg-green-700 transition shadow-md";
+      resetBtn.onclick = resetProgress;
+      container.appendChild(resetBtn);
+    }
+
+    function handleDayClick(dayNumber) {
+      const code = dayCodes[dayNumber];
+      if (code) {
+        const userInput = prompt(`Enter access code for Day ${dayNumber}:`);
+        if (userInput === code) {
+          startQuiz(dayNumber);
+        } else {
+          alert("Incorrect code. Try again.");
+        }
+      } else {
+        startQuiz(dayNumber);
+      }
+    }
+
+    function startQuiz(dayNumber) {
+      const questions = getQuestionsForDay(dayNumber);
+      const quizContainer = document.getElementById("quiz-container");
+      const daysContainer = document.getElementById("days-container");
+
+      quizContainer.innerHTML = `
+        <div class="flex justify-between items-center mb-4">
+          <button id="back-btn" class="py-2 px-4 bg-gray-500 text-white rounded-xl hover:bg-gray-600">« Back to Days</button>
+          <h2 class="text-2xl font-bold text-purple-700">📘 Day ${dayNumber} Quiz</h2>
+          <div id="timer" class="text-red-600 font-bold">⏳ Time: 45:00</div>
+        </div>
+      `;
+      
+      daysContainer.innerHTML = '';
+      quizContainer.classList.remove("hidden");
+
+      questions.forEach((q, index) => {
+        const div = document.createElement("div");
+        div.className = "bg-gray-100 p-4 rounded-xl shadow-md quiz-question";
+        
+        let optionsHtml = q.options.map((opt, i) => {
+          const label = String.fromCharCode(65 + i);
+          return `
+            <div class="mt-2">
+              <label class="inline-flex items-center cursor-pointer">
+                <input type="radio" name="q${index}" class="mr-2" data-question-index="${index}" data-answer-index="${i}">
+                <span>${label}. ${opt}</span>
+              </label>
+            </div>`;
+        }).join("");
+
+        div.innerHTML = `
+          <p class="text-lg font-medium mb-2"><strong>Q${index + 1}:</strong> ${q.question}</p>
+          ${optionsHtml}
+          <div id="feedback-q${index}" class="mt-2"></div>
+        `;
+        quizContainer.appendChild(div);
+      });
+
+      const submitBtn = document.createElement("button");
+      submitBtn.className = "mt-4 py-2 px-4 bg-green-600 text-white rounded-xl font-semibold hover:bg-green-700 transition";
+      submitBtn.textContent = "Submit";
+      
+      const scoreDisplay = document.createElement("div");
+      scoreDisplay.id = "score-display";
+      scoreDisplay.className = "mt-4 p-4 bg-blue-50 rounded-lg";
+
+      submitBtn.onclick = () => submitQuiz(questions, scoreDisplay, dayNumber);
+      
+      document.getElementById("back-btn").onclick = renderDays;
+
+      quizContainer.appendChild(submitBtn);
+      quizContainer.appendChild(scoreDisplay);
+
+      // 45-minute timer (2700 seconds)
+      let timeLeft = 2700;
+      const timer = document.getElementById("timer");
+      const countdown = setInterval(() => {
+        const minutes = Math.floor(timeLeft / 60);
+        const seconds = timeLeft % 60;
+        timer.textContent = `⏳ Time: ${minutes}:${seconds.toString().padStart(2, '0')}`;
+        if (timeLeft-- <= 0) {
+          clearInterval(countdown);
+          submitQuiz(questions, scoreDisplay, dayNumber);
+        }
+      }, 1000);
+    }
+
+    function submitQuiz(questions, scoreDisplay, dayNumber) {
+      let correctAnswers = 0;
+      let wrongAnswers = 0;
+      let unanswered = 0;
+      
+      questions.forEach((q, index) => {
+        const selectedOption = document.querySelector(`input[name="q${index}"]:checked`);
+        const feedbackDiv = document.getElementById(`feedback-q${index}`);
+        feedbackDiv.innerHTML = "";
+
+        if (selectedOption) {
+          const selectedAnswerIndex = parseInt(selectedOption.getAttribute('data-answer-index'));
+          
+          if (selectedAnswerIndex === q.correct) {
+            correctAnswers++;
+            feedbackDiv.innerHTML = `<span class="text-green-500">✔ Correct!</span>`;
+          } else {
+            wrongAnswers++;
+            const correctLabel = String.fromCharCode(65 + q.correct);
+            feedbackDiv.innerHTML = `
+              <span class="text-red-500">✖ Wrong</span>
+              <span class="text-green-500 ml-2">(Correct: ${correctLabel}. ${q.options[q.correct]})</span>
+            `;
+          }
+        } else {
+          unanswered++;
+          const correctLabel = String.fromCharCode(65 + q.correct);
+          feedbackDiv.innerHTML = `
+            <span class="text-yellow-600">⚠ Not answered</span>
+            <span class="text-green-500 ml-2">(Correct: ${correctLabel}. ${q.options[q.correct]})</span>
+          `;
+        }
+      });
+
+      const finalScore = Math.max(0, correctAnswers - (wrongAnswers * 0.2)).toFixed(1);
+      if (dayNumber >= unlockedDays && finalScore >= 0) {
+        unlockedDays = dayNumber + 1;
+        localStorage.setItem('unlockedDays', unlockedDays);
+        alert(`Congratulations! Day ${dayNumber + 1} is now unlocked.`);
+      }
+
+      const totalQuestions = questions.length;
+      const deductedPoints = wrongAnswers * 0.2;
+      
+      scoreDisplay.innerHTML = `
+        <div class="grid grid-cols-3 gap-4 text-center">
+          <div class="bg-green-100 p-2 rounded">
+            <div class="text-2xl font-bold text-green-700">${correctAnswers}</div>
+            <div class="text-sm">Correct</div>
+          </div>
+          <div class="bg-red-100 p-2 rounded">
+            <div class="text-2xl font-bold text-red-700">${wrongAnswers}</div>
+            <div class="text-sm">Wrong</div>
+          </div>
+          <div class="bg-yellow-100 p-2 rounded">
+            <div class="text-2xl font-bold text-yellow-700">${unanswered}</div>
+            <div class="text-sm">Unanswered</div>
+          </div>
+        </div>
+        <div class="mt-4 text-center">
+          <div class="text-lg font-semibold">Score Calculation:</div>
+          <div class="text-xl font-bold text-blue-700 mt-2">${finalScore} / ${totalQuestions}</div>
+          <div class="text-sm text-gray-600 mt-1">(Correct: ${correctAnswers} - Penalty: ${deductedPoints.toFixed(1)})</div>
+          <div class="text-xs text-gray-500 mt-2">*20% penalty per wrong answer</div>
+        </div>
+      `;
+    }
+
+    renderDays();
+  </script>
+</body>
+</html>
